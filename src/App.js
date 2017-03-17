@@ -1,8 +1,7 @@
 //var request = require('request');
 
 $(function(){
-  alert('In')
-  
+ 
 
 });
 
@@ -15,7 +14,7 @@ var Manager = {
      * @param authkey
      * @param cb
      */
-    getTestCases: function (cb) {
+    getTestCases: function (sdk, cb) {
 
         try{
 
@@ -27,7 +26,7 @@ var Manager = {
 
             var form = {
                 "environment": "sdk",
-                "clientSDKtype": "JSSDK",
+                "clientSDKtype": sdk,
                 "domain": "irisconnect.comcast.com"
             };
             form = JSON.stringify(form);
@@ -41,8 +40,8 @@ var Manager = {
             ).success(function(data, status) {
                 console.log(" getCimaAccessToken Response statusCode : " + status + " body : ",data);
                 res = {
-                    statusCode : status,
-                    data : data
+                    "statusCode" : status,
+                    "data" : data.data
                 };
                 cb(res);
             });

@@ -30,6 +30,7 @@ render((
              <IndexRoute component = {Home} />   
              <Route path = "home" component = {Home} />
              <Route path = "testCases" component={TestCases}/>
+             <Route path = "test/:id" component={TestCases}/>
         </Route>
     </Router>
 ),
