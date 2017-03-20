@@ -4,6 +4,7 @@ import {Router, Route, Link} from 'react-router';
 import { browserHistory, IndexRoute } from 'react-router';
 import TestCases from './testCases.jsx';
 import Home from './Home.jsx';
+import TestPage from './testPage.jsx';
 //render(<Home />, document.getElementById('container'));
 class App extends React.Component {
    render() {
@@ -30,7 +31,7 @@ render((
              <IndexRoute component = {Home} />   
              <Route path = "home" component = {Home} />
              <Route path = "testCases" component={TestCases}/>
-             <Route path = "test/:id" component={TestCases}/>
+             <Route path = "test/:id" component={TestPage}/>
         </Route>
     </Router>
 ),

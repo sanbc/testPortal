@@ -10,10 +10,13 @@ class TestCaseList extends Component{
         console.log("list",this.props.list.testId);
         return (
         
-          <div>
-                <div>{this.props.list.testId}</div>
-                <Link to={`/test/${this.props.list.testName}`}>{this.props.list.testName}</Link>
-            </div>
+          
+                <tr>
+                    <td>{this.props.list.testId}</td>
+                    <td><Link to={`/test/${this.props.list.testName}`}>{this.props.list.testName}</Link></td>
+                </tr>
+                                
+          
         );
     }
 }

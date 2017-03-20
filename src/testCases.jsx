@@ -45,9 +45,19 @@ class TestCases extends Component {
                     <option value="JSSDK">JSSDK</option>
                     <option value="EMBSDK">EMB SDK</option>
                 </select>
-                {[...this.state.testCases].map((x, i) =>
-                <TestCaseList key={i} list={x}></TestCaseList>
-                )}
+                <table className="table">
+                    <thead>
+                        <tr>
+                        <th>TestID</th>
+                        <th>TestCase</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {[...this.state.testCases].map((x, i) =>
+                        <TestCaseList key={i} list={x}></TestCaseList>
+                        )}
+                    </tbody>
+                </table>
             </div>
         );
     }
