@@ -40,7 +40,7 @@ class TestCases extends Component {
         return (
            <div className="container">
                 <div className="row">
-                    <h3 className="col-md-6">Select the required options:</h3>
+                    <h3 className="col-md-6 commonProps">Select the required options:</h3>
                 </div>
                 <form className="form-horizontal">
                     <div className="form-group">
@@ -49,18 +49,52 @@ class TestCases extends Component {
                             <select id="envType" className="form-control " onChange={this.sdkOptionSelected}>
                                 <option value="default">Env</option>
                                 <option value="DEV">Dev</option>
-                                <option value="EMBSDK">SDK</option>
+                                <option value="SDK">SDK</option>
                             </select>
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="envType" className="control-label col-md-2">SDK</label>
+                        <label htmlFor="domainType" className="control-label col-md-2">SDK</label>
                         <div className="col-md-2">
-                            <select id="envType" className="form-control " onChange={this.sdkOptionSelected}>
-                                <option value="default">Env</option>
-                                <option value="DEV">Dev</option>
-                                <option value="EMBSDK">SDK</option>
+                            <select id="domainType" className="form-control " onChange={this.sdkOptionSelected}>
+                                <option value="default">Domain</option>
+                                <option value="irisconnect.comcast.com">irisconnect.comcast.com</option>
+                                <option value="xfinityhome.comcast.com">xfinityhome.comcast.com</option>
+                                <option value="xfinityvoice.comcast.com">xfinityvoice.comcast.com</option>
+                                <option value="iristest.comcast.com">iristest.comcast.com</option>
                             </select>
+                        </div>
+                    </div>
+                
+                <div className="row">
+                    <h4 className="col-md-6 commonProps">Test Calls Between</h4>
+                </div>
+                <div className="form-group col-md-6 ">
+                    <div className="radio">
+                        <label>
+                            <input type="radio" name="fromSdk" id="fromSdk1" value="JSSDK"></input>
+                            JSSDK
+                        </label>
+                    </div>
+                    <div className="radio">
+                        <label>
+                            <input type="radio" name="fromSdk" id="fromSdk2" value="EMBSDK"></input>
+                            EMB SDK
+                        </label>
+                    </div>
+                </div>
+                    <div className="form-group col-md-6">
+                        <div className="radio">
+                            <label>
+                                <input type="radio" name="ToSdk" id="ToSdk1" value="JSSDK"></input>
+                                JSSDK
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio" name="ToSdk" id="ToSdk2" value="EMBSDK"></input>
+                                EMBSDK
+                            </label>
                         </div>
                     </div>
                 </form>
