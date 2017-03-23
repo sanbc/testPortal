@@ -38,13 +38,32 @@ class TestCases extends Component {
          console.log("this.testCases", this.testCases);
             
         return (
-           <div>
-                <label>Choose the SDK</label>
-                <select id="sdkType" onChange={this.sdkOptionSelected}>
-                    <option value="default">SDK</option>
-                    <option value="JSSDK">JSSDK</option>
-                    <option value="EMBSDK">EMB SDK</option>
-                </select>
+           <div className="container">
+                <div className="row">
+                    <h3 className="col-md-6">Select the required options:</h3>
+                </div>
+                <form className="form-horizontal">
+                    <div className="form-group">
+                        <label htmlFor="envType" className="control-label col-md-2">SDK</label>
+                        <div className="col-md-2">
+                            <select id="envType" className="form-control " onChange={this.sdkOptionSelected}>
+                                <option value="default">Env</option>
+                                <option value="DEV">Dev</option>
+                                <option value="EMBSDK">SDK</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="envType" className="control-label col-md-2">SDK</label>
+                        <div className="col-md-2">
+                            <select id="envType" className="form-control " onChange={this.sdkOptionSelected}>
+                                <option value="default">Env</option>
+                                <option value="DEV">Dev</option>
+                                <option value="EMBSDK">SDK</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
                 <table className="table">
                     <thead>
                         <tr>
