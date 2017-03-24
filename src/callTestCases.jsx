@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import TestCaseList from './testCaseList.jsx'
 
 
-class TestCases extends Component {
+class callTestCases extends Component {
     constructor(props) {
         super(props);
         
@@ -44,7 +44,7 @@ class TestCases extends Component {
                 </div>
                 <form className="form-horizontal">
                     <div className="form-group">
-                        <label htmlFor="envType" className="control-label col-md-2">SDK</label>
+                        <label htmlFor="envType" className="control-label col-md-2">Env</label>
                         <div className="col-md-2">
                             <select id="envType" className="form-control " onChange={this.sdkOptionSelected}>
                                 <option value="default">Env</option>
@@ -54,7 +54,7 @@ class TestCases extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="domainType" className="control-label col-md-2">SDK</label>
+                        <label htmlFor="domainType" className="control-label col-md-2">Domain</label>
                         <div className="col-md-2">
                             <select id="domainType" className="form-control " onChange={this.sdkOptionSelected}>
                                 <option value="default">Domain</option>
@@ -117,4 +117,4 @@ class TestCases extends Component {
 }
 
 
-export default TestCases;
+export default callTestCases;
