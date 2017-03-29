@@ -8,14 +8,21 @@ class apiTestCases extends Component {
         super(props);
         
         this.sdkOptionSelected = this.sdkOptionSelected.bind(this);
+        this.executeTestCases = this.executeTestCases.bind(this);
+        this.testCasesSelected = this.testCasesSelected.bind(this);
+        this.selectedtest = [];
    //     this.testCases = '';
-        self = this;
-        self.state = {
-                    'testCases':  ''
+        this.state = {
+                    'testCases':  '',
+                    'sdk': ''
                 }
     }
     sdkOptionSelected(event){
         var sdk =  event.target.value;
+        self = this;
+        self.setState({
+                    'sdk':  sdk
+                })
         if(sdk !== 'default'){
             Manager.getTestCases(sdk, function(testCaseResp) {
                 //testCaseResp = testCaseResp['data']['data'];
@@ -24,16 +31,25 @@ class apiTestCases extends Component {
                 testCaseResp = JSON.parse(testCaseResp)
                 console.log("testCaseResp",testCaseResp);
                 
-                console.log("testCaseResp",testCaseResp["testSuites"]);
+                console.log("testCaseResp",testCaseResp["testsuites"]);
                 self.setState({
-                    'testCases':  testCaseResp['testSuites']
+                    'testCases':  testCaseResp['testsuites']
                 })
+
                 
                // testCases = testCaseResp;
                 });
         }
     }
-    
+    testCasesSelected(event){
+        this.selectedtest.push(event.target.value);
+    }
+    executeTestCases() {
+        console.log("this.props",this.selectedtest);
+        Manager.executeTestCases(this.state.sdk, this.selectedtest, function(testCaseResp) {
+            console.log("testCaseResp",testCaseResp);
+        });
+    }
     render (){
          console.log("this.testCases", this.testCases);
             
@@ -70,15 +86,15 @@ class apiTestCases extends Component {
                         <h4 className="col-md-6 commonProps">Test SDK APIs</h4>
                     </div>
                     <div className="form-group col-md-6 ">
-                        <div className="radio">
+                        <div className="radio" onChange={this.sdkOptionSelected}>
                             <label>
                                 <input type="radio" name="fromSdk" id="fromSdk1" value="JSSDK"></input>
                                 JSSDK
                             </label>
                         </div>
-                        <div className="radio">
+                        <div className="radio"  onChange={this.sdkOptionSelected}>
                             <label>
-                                <input type="radio" name="fromSdk" id="fromSdk2" value="EMBSDK"></input>
+                                <input type="radio" name="fromSdk" id="fromSdk2" value="EmbSDK"></input>
                                 EMB SDK
                             </label>
                         </div>
@@ -87,16 +103,17 @@ class apiTestCases extends Component {
                 <table className="table">
                     <thead>
                         <tr>
-                        <th>TestID</th>
+                        <th>Select</th>
                         <th>TestCase</th>
                         </tr>
                     </thead>
                     <tbody>
                         {[...this.state.testCases].map((x, i) =>
-                        <TestCaseList key={i} list={x}></TestCaseList>
+                        <TestCaseList key={i} list={x} onChange={this.testCasesSelected}></TestCaseList>
                         )}
                     </tbody>
                 </table>
+                <button type="submit" onClick={this.executeTestCases}>Execute Test Cases</button>
             </div>
         );
     }
