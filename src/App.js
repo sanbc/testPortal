@@ -14,7 +14,7 @@ var Manager = {
      * @param authkey
      * @param cb
      */
-    getTestCases: function (sdk, cb) {
+    getTestCases: function (envOption, domainOption, sdk, cb) {
 
         try{
 
@@ -25,9 +25,9 @@ var Manager = {
             };
 
             var form = {
-                "environment": "sdk",
+                "environment": envOption,
                 "clientSDKtype": sdk,
-                "domain": "irisconnect.comcast.com"
+                "domain": domainOption
             };
             form = JSON.stringify(form);
             console.log("\nCIMA :: getCimaAccessToken grant_type password \n"+ "Headers : "+JSON.stringify(headers) + "\nPayload : "+JSON.stringify(form));
@@ -53,7 +53,7 @@ var Manager = {
         }
 
     },
-    executeTestCases: function (sdk, testSuites, cb) {
+    executeTestCases: function (details, cb) {
 
         try{
 
@@ -64,11 +64,17 @@ var Manager = {
             };
 
             var form = {
-                "environment": "sdk",
-                "clientSDKType": sdk,
-                "testSuites": testSuites,
-                "deviceId":"ebab",
-                "domain": "iristest.comcast.com"
+                "environment": details.envOption,
+                "clientSDKType": details.sdk,
+                "testSuites": details.testSuites,
+                "deviceId":details.deviceId,
+                "domain": details.domainOption,
+                "roomname": details.roomname,
+                "participants" : details.participants,
+                "type" : details.type,
+                "sessionId" : details.sessionId,
+                "fromTN" : details.fromTN,
+                "toTN" : details.toTN
             };
             form = JSON.stringify(form);
             console.log("\nCIMA :: getCimaAccessToken grant_type password \n"+ "Headers : "+JSON.stringify(headers) + "\nPayload : "+JSON.stringify(form));
