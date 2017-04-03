@@ -13,15 +13,10 @@ class TestReport extends Component{
         
           
                 <tr>
-                    <td>
-                        <div className="checkbox" onChange={this.props.onChange}>
-                            <label>
-                                <input type="checkbox" name="fromSdk" id="fromSdk1" value={this.props.list.id}></input>
-                                
-                            </label>
-                        </div>
-                    </td>
                     <td>{this.props.list.name}</td>
+                    <td>{this.props.list.state}</td>
+                    <td>{this.props.list.testCase}</td>
+                    
                 </tr>
                                 
           

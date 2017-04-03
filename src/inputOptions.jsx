@@ -8,6 +8,9 @@ class InputOptions extends Component{
         this.passwordChange = this.passwordChange.bind(this);
         this.roomnameChange = this.roomnameChange.bind(this);
         this.participantChange = this.participantChange.bind(this);
+        this.deviceIdChange = this.deviceIdChange.bind(this);
+        this.fromTNChange = this.fromTNChange.bind(this);
+        this.toTNChange = this.toTNChange.bind(this);
         this.state = {};
     } 
     onSubmit(event) {
@@ -29,9 +32,24 @@ class InputOptions extends Component{
             "roomname" : event.target.value,
         })
     }
-    participantChange (event) {
+    participantChange(event) {
         this.setState ({
             "participants" : event.target.value
+        })
+    }
+    deviceIdChange(event) {
+        this.setState ({
+            "deviceId" : event.target.value
+        })
+    }
+    fromTNChange(event) {
+        this.setState ({
+            "fromTN" : event.target.value
+        })
+    }
+    toTNChange(event) {
+        this.setState ({
+            "toTN" : event.target.value
         })
     }
     render() {
@@ -52,20 +70,48 @@ class InputOptions extends Component{
                         </div>
                         
                     </div>
-                    <div className={this.props.testCases.includes('TS11') ? 'form-group' : 'hidden'}>
+                    <div className={this.props.testCases.includes('TS11','TS12') ? 'form-group' : 'hidden'}>
                         <label htmlFor="roomname" className="control-label col-md-2">Roomname</label>
                         <div className=" col-md-2">
                             <input id="roomname" className="form-control" type="text"  onChange={this.roomnameChange}></input>
                         </div>
                         
                     </div>
-                    <div className={this.props.testCases.includes('TS1', 'TS2', 'TS3', 'TS4') ? 'form-group' : 'hidden'}>
+                    <div className={this.props.testCases.includes('TS8') ? 'form-group' : 'hidden'}>
                         <label htmlFor="participantId" className="control-label col-md-2">ParticipantId</label>
                         <div className=" col-md-2">
                             <input id="participantId" className="form-control" type="text" onChange={this.participantChange}></input>
                         </div>
+                    </div>
+                    <div className={this.props.testCases.includes('TS7', 'TS13', 'TS22') ? 'form-group' : 'hidden'}>
+                        <label htmlFor="deviceId" className="control-label col-md-2">deviceId</label>
+                        <div className=" col-md-2">
+                            <input id="deviceId" className="form-control" type="text" onChange={this.deviceIdChange}></input>
+                        </div>
                         
                     </div>
+                    <div className={this.props.testCases.includes('TS22') ? 'form-group' : 'hidden'}>
+                        <label htmlFor="fromTN" className="control-label col-md-2">fromTN</label>
+                        <div className=" col-md-2">
+                            <input id="fromTN" className="form-control" type="text" onChange={this.fromTNChange}></input>
+                        </div>
+                        
+                    </div>
+                    <div className={this.props.testCases.includes('TS22') ? 'form-group' : 'hidden'}>
+                        <label htmlFor="participantId" className="control-label col-md-2">toTN</label>
+                        <div className=" col-md-2">
+                            <input id="toTN" className="form-control" type="text" onChange={this.toTNChange}></input>
+                        </div>
+                        
+                    </div>
+                    <div className={this.props.testCases.includes('TS20', 'TS23') ? 'form-group' : 'hidden'}>
+                        <label htmlFor="loadCount" className="control-label col-md-2">Load Count</label>
+                        <div className=" col-md-2">
+                            <input id="toTN" className="form-control" type="text" onChange={this.loadCountChange}></input>
+                        </div>
+                        
+                    </div>
+                    
                     <button  onClick={this.onSubmit}>Execute Test Cases</button>    
                 </form>
         

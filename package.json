@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server --hot"
+    "dev-server": "node dev-server.js",
+    "dev-client": "webpack-dev-server --hot --port 8080"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +18,10 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.25",
+    "mongoose": "^4.9.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",

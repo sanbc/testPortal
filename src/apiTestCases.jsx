@@ -49,7 +49,12 @@ class apiTestCases extends Component {
         }
     }
     testCasesSelected(event){
-        this.selectedtest.push(event.target.value);
+        if(event.target.checked) {
+            this.selectedtest.push(event.target.value);
+        } else {
+            var index = this.selectedtest.indexOf(event.target.value)
+            this.selectedtest.splice(index, 1);
+        }
         this.setState({
                     'showInputs':  true
                 })
@@ -93,6 +98,9 @@ class apiTestCases extends Component {
             self.setState({
                     'testReport':  testCaseResp['testReport']
                 })
+            Manager.pushToDb(testCaseResp['testReport'], function() {
+                
+            });
         });
     }
     render (){

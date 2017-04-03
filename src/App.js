@@ -100,4 +100,27 @@ var Manager = {
         }
 
     },
+    pushToDb: function(testReport, cb) {
+        
+       
+        //form = JSON.stringify(form);
+        var testReport = JSON.stringify(testReport);
+        var headers = {
+                "Content-Type": "application/json"
+            };
+        
+         $.post(
+                'http://localhost:3000/insertReport',
+                testReport,
+
+                headers
+            ).success(function(data, status) {
+                console.log(" getCimaAccessToken Response statusCode : " + status + " body : ",data);
+                res = {
+                    "statusCode" : status,
+                    "data" : data.data
+                };
+                cb(res);
+            });
+    } 
 }
