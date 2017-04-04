@@ -4,7 +4,7 @@ import TestCaseList from './testCaseList.jsx';
 import TestReport from './testReport.jsx'
 import InputOptions from './inputOptions.jsx';
 
-class apiTestCases extends Component {
+class loadTestCases extends Component {
     constructor(props) {
         super(props);
         
@@ -162,7 +162,7 @@ class apiTestCases extends Component {
                     </thead>
                     <tbody>
                         {[...this.state.testCases].map((x, i) =>
-                            x.type == 'API' ? <TestCaseList key={i} list={x} onChange={this.testCasesSelected}></TestCaseList> : <tr key={i}></tr>
+                            x.type == 'LoadTesting' ? <TestCaseList key={i} list={x} onChange={this.testCasesSelected}></TestCaseList> : <tr key={i}></tr>
                         
                         )}
                     </tbody>
@@ -189,4 +189,4 @@ class apiTestCases extends Component {
 }
 
 
-export default apiTestCases;
+export default loadTestCases;

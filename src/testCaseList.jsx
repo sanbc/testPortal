@@ -8,7 +8,7 @@ class TestCaseList extends Component{
     }
     
     render(props) {
-        console.log("list",this.props);
+        console.log("list",this.props.list.type);
         return (
         
           
@@ -21,7 +21,8 @@ class TestCaseList extends Component{
                             </label>
                         </div>
                     </td>
-                    <td><Link to={`/test/${this.props.list.name}`}>{this.props.list.name}</Link></td>
+                    <td>{this.props.list.id}</td>
+                    <td>{this.props.list.name}</td>
                 </tr>
                                 
           

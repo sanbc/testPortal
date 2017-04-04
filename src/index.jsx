@@ -4,6 +4,7 @@ import {Router, Route, Link} from 'react-router';
 import { browserHistory, IndexRoute } from 'react-router';
 import callTestCases from './callTestCases.jsx';
 import apiTestCases from './apiTestCases.jsx';
+import loadTestCases from './loadTestCases.jsx';
 
 import TestCases from './callTestCases.jsx';
 
@@ -18,6 +19,7 @@ class App extends React.Component {
                 <Link className="navbar-brand" to='/'>Home</Link>
                 <Link className="navbar-brand" to='/callTestCases'>Call Test Cases</Link>
                 <Link className="navbar-brand" to='/apiTestCases'>API Test Cases</Link>
+                <Link className="navbar-brand" to='/loadTestCases'>Load Test Cases</Link>
             </nav>
         
         
@@ -37,6 +39,7 @@ render((
              <Route path = "home" component = {Home} />
              <Route path = "callTestCases" component={callTestCases}/>
              <Route path = "apiTestCases" component={apiTestCases}/>
+             <Route path = "loadTestCases" component={loadTestCases}/>
              <Route path = "test/:id" component={TestPage}/>
         </Route>
     </Router>
