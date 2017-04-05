@@ -1,3 +1,10 @@
 .commonProps {
     text-align : center;
 }
+
+.navbarMenu {
+    margin: 0 -15px;
+    height: 100vh;
+    width: inherit;
+    position: fixed;
+}

@@ -70,7 +70,7 @@ var Manager = {
                 "deviceId":details.deviceId,
                 "domain": details.domainOption,
                 "roomname": details.roomname,
-                "participants" : details.participants,
+                "participantId" : details.participants,
                 "type" : details.type,
                 "sessionId" : details.sessionId,
                 "fromTN" : details.fromTN,

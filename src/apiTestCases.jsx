@@ -77,7 +77,7 @@ class apiTestCases extends Component {
             "domainOption" : this.state.domainOption,
             "sdk" : this.state.sdk,
             "testSuites" : this.selectedtest,
-            "roomname" : data.roomname,
+            "roomName" : data.roomname,
             "deviceId" : data.deviceId,
             "participants" : data.participants,
             "type" : data.type,

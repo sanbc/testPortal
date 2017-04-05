@@ -14,17 +14,43 @@ import TestPage from './testPage.jsx';
 class App extends React.Component {
    render() {
       return (
-        <div>
-            <nav className="navbar navbar-inverse">
-                <Link className="navbar-brand" to='/'>Home</Link>
-                <Link className="navbar-brand" to='/callTestCases'>Call Test Cases</Link>
-                <Link className="navbar-brand" to='/apiTestCases'>API Test Cases</Link>
-                <Link className="navbar-brand" to='/loadTestCases'>Load Test Cases</Link>
-            </nav>
+          <div className="container-fluid">
+            <div className="row">
+                <div className="col-sm-3 col-md-3 col-lg-2">
+                    <div className="navbar navbar-inverse navbar-fixed-side navbarMenu">
+                        <div className="container">
+                            <Link className="navbar-brand" to='/'>Home</Link>
+                        </div>
+                        <div className="collapse navbar-collapse">
+                            <ul className="nav navbar-nav">
+                                <li>
+                                    <Link className="navbar-brand" to='/callTestCases'>Call Test Cases</Link>
+                                </li>
+                                <li>
+                                    <Link className="navbar-brand" to='/apiTestCases'>API Test Cases</Link>
+                                    <ul >
+                                        <li>
+                                             <Link className="navbar-brand" to='/apiTestCases/EventManager'>EventManager</Link>
+                                        </li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <Link className="navbar-brand" to='/loadTestCases'>Load Test Cases</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-sm-9 col-md-9 col-lg-10">
+                    {this.props.children}
+                </div>
+            </div>
+          </div>
         
-        
-              {this.props.children}
-        </div> 
       )
    }
 }
@@ -40,7 +66,7 @@ render((
              <Route path = "callTestCases" component={callTestCases}/>
              <Route path = "apiTestCases" component={apiTestCases}/>
              <Route path = "loadTestCases" component={loadTestCases}/>
-             <Route path = "test/:id" component={TestPage}/>
+             <Route path = "apiTestCases/:id" component={apiTestCases}/>
         </Route>
     </Router>
 ),
