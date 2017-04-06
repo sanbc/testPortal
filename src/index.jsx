@@ -7,7 +7,9 @@ import apiTestCases from './apiTestCases.jsx';
 import loadTestCases from './loadTestCases.jsx';
 
 import TestCases from './callTestCases.jsx';
-
+<a href="/apiTestCases/EventManager" style="
+    color: #9d9d9d;
+">EventManager</a>
 import Home from './Home.jsx';
 import TestPage from './testPage.jsx';
 //render(<Home />, document.getElementById('container'));
@@ -24,22 +26,57 @@ class App extends React.Component {
                         <div className="collapse navbar-collapse">
                             <ul className="nav navbar-nav">
                                 <li>
-                                    <Link className="navbar-brand" to='/callTestCases'>Call Test Cases</Link>
+                                    <Link className="navbar-brand" to='/callTestCases'>End to End Test </Link>
+                                    <div className="collapse navbar-collapse">
+                                        <ul className="nav navbar-nav">
+                                            <li >
+                                                <Link className="nav-link" to='/callTestCases/VideoCall'>Video Call</Link>
+                                            </li>
+                                            <li>
+                                                <Link className="navColor" to='/callTestCases/PSTNIn'>PSTN Inbound</Link>
+                                            </li>
+                                            <li>
+                                                <Link className="navColor" to='/callTestCases/PSTNOut'>PSTN Outbound</Link>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
                                 </li>
                                 <li>
-                                    <Link className="navbar-brand" to='/apiTestCases'>API Test Cases</Link>
-                                    <ul >
-                                        <li>
-                                             <Link className="navbar-brand" to='/apiTestCases/EventManager'>EventManager</Link>
-                                        </li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
+                                    <Link className="navbar-brand" to='/apiTestCases'>API Test </Link>
+                                    <div className="collapse navbar-collapse">
+                                        <ul className="nav navbar-nav">
+                                            <li >
+                                                <Link className="nav-link" to='/apiTestCases/EventManager'>EventManager</Link>
+                                            </li>
+                                            <li>
+                                                <Link className="navColor" to='/apiTestCases/Authmanager'>Authmanager</Link>
+                                            </li>
+                                            <li>
+                                                <Link className="navColor" to='/apiTestCases/CloudCode'>CloudCode</Link>
+                                            </li>
+                                            <li>
+                                                <Link className="navColor" to='/apiTestCases/NotificationManager'>NotificationManager</Link>
+                                            </li>
+                                            <li>
+                                                <Link className="navColor" to='/apiTestCases/IdentityManager'>IdentityManager</Link>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
                                 <li>
-                                    <Link className="navbar-brand" to='/loadTestCases'>Load Test Cases</Link>
+                                    <Link className="navbar-brand" to='/loadTestCases'>Load Test </Link>
+                                    <div className="collapse navbar-collapse">
+                                        <ul className="nav navbar-nav">
+                                            <li >
+                                                <Link className="nav-link" to='/loadTestCases/EventManager'>EventManager</Link>
+                                            </li>
+                                            <li>
+                                                <Link className="navColor" to='/loadTestCases/Authmanager'>Authmanager</Link>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
                                 </li>
                             </ul>
                         </div>

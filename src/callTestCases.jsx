@@ -79,7 +79,7 @@ class callTestCases extends Component {
             "testSuites" : this.selectedtest,
             "roomname" : data.roomname,
             "deviceId" : data.deviceId,
-            "participants" : data.participants,
+            "participants" : [data.participants],
             "type" : data.type,
             "sessionId" : data.sessionId,
             "fromTN" : data.fromTN,
