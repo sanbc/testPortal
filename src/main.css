@@ -8,3 +8,7 @@
     width: inherit;
     position: fixed;
 }
+
+.navColor {
+    color: #9d9d9d;
+}

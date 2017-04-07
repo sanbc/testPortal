@@ -27,6 +27,8 @@ class apiTestCases extends Component {
     sdkOptionSelected(event){
         var sdk =  event.target.value;
         self = this;
+        self.selectedtest = [];
+        
         this.setState({
                     'sdk':  sdk
                 })
@@ -41,8 +43,17 @@ class apiTestCases extends Component {
                 console.log("testCaseResp",testCaseResp["testsuites"]);
                 self.setState({
                     'testCases':  testCaseResp['testsuites']
+                });
+                
+                self.state.testCases.map((x, i) => {
+                    if( x.name == (self.props.params.id) ) {
+                       self.selectedtest.push(x.id);
+                    }                                  
+                });
+                
+                self.setState({
+                    'showInputs':  true
                 })
-
                 
                // testCases = testCaseResp;
                 });
@@ -87,6 +98,12 @@ class apiTestCases extends Component {
             "userName" : data.userName,
             "password" : data.password,
             
+        }
+        var details = {
+            "environment" : this.state.envOption,
+            "domain" : this.state.domainOption,
+            "clientSDKType" : this.state.sdk,
+            "testSuites" : this.selectedtest
         }
         var self = this;
         Manager.executeTestCases(details, function(testCaseResp) {
@@ -138,7 +155,7 @@ class apiTestCases extends Component {
                     <div className="row">
                         <h4 className="col-md-6 commonProps">Test SDK APIs</h4>
                     </div>
-                    <div className="form-group col-md-6 ">
+                    <div className="form-group  ">
                         <div className="radio" onChange={this.sdkOptionSelected}>
                             <label>
                                 <input type="radio" name="fromSdk" id="fromSdk1" value="JSSDK"></input>
@@ -153,6 +170,7 @@ class apiTestCases extends Component {
                         </div>
                     </div>
                 </form>
+                {/*
                 <table className={this.state.sdk ? 'table' : 'hidden'}>
                     <thead>
                         <tr>
@@ -164,9 +182,9 @@ class apiTestCases extends Component {
                         {[...this.state.testCases].map((x, i) =>
                             x.type == 'API' ? <TestCaseList key={i} list={x} onChange={this.testCasesSelected}></TestCaseList> : <tr key={i}></tr>
                         
-                        )}
+                        )} 
                     </tbody>
-                </table>
+                </table> */}
                 { this.state.showInputs ? <InputOptions submit={this.executeTestCases} testCases={this.selectedtest}></InputOptions> : null}
                 
                 <table className={this.state.testReport ? 'table' : 'hidden'}>

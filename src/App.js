@@ -63,20 +63,8 @@ var Manager = {
                 "Content-Type": "application/json"
             };
 
-            var form = {
-                "environment": details.envOption,
-                "clientSDKType": details.sdk,
-                "testSuites": details.testSuites,
-                "deviceId":details.deviceId,
-                "domain": details.domainOption,
-                "roomname": details.roomname,
-                "participantId" : details.participants,
-                "type" : details.type,
-                "sessionId" : details.sessionId,
-                "fromTN" : details.fromTN,
-                "toTN" : details.toTN
-            };
-            form = JSON.stringify(form);
+            
+            form = JSON.stringify(details);
             console.log("\nCIMA :: getCimaAccessToken grant_type password \n"+ "Headers : "+JSON.stringify(headers) + "\nPayload : "+JSON.stringify(form));
 
             $.post(

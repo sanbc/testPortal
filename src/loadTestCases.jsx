@@ -7,7 +7,6 @@ import InputOptions from './inputOptions.jsx';
 class loadTestCases extends Component {
     constructor(props) {
         super(props);
-        
         this.sdkOptionSelected = this.sdkOptionSelected.bind(this);
         this.executeTestCases = this.executeTestCases.bind(this);
         this.testCasesSelected = this.testCasesSelected.bind(this);
@@ -27,6 +26,7 @@ class loadTestCases extends Component {
     sdkOptionSelected(event){
         var sdk =  event.target.value;
         self = this;
+        self.selectedtest = [];
         this.setState({
                     'sdk':  sdk
                 })
@@ -41,9 +41,15 @@ class loadTestCases extends Component {
                 console.log("testCaseResp",testCaseResp["testsuites"]);
                 self.setState({
                     'testCases':  testCaseResp['testsuites']
+                });
+                self.state.testCases.map((x, i) => {
+                    if( x.name == (self.props.params.id) ) {
+                       self.selectedtest.push(x.id);
+                    }                                  
                 })
-
-                
+                self.setState({
+                    'showInputs':  true
+                })
                // testCases = testCaseResp;
                 });
         }
@@ -71,6 +77,7 @@ class loadTestCases extends Component {
                 })
     }
     executeTestCases(data) {
+        
         console.log("this.props",this.selectedtest);
         var details = {
             "envOption" : this.state.envOption,
@@ -86,7 +93,15 @@ class loadTestCases extends Component {
             "toTN" : data.toTN,
             "userName" : data.userName,
             "password" : data.password,
+            "loadCount" : data.loadCount
             
+        }
+        var details = {
+            "environment" : this.state.envOption,
+            "domain" : this.state.domainOption,
+            "clientSDKType" : this.state.sdk,
+            "testSuites" : this.selectedtest,
+            "loadCount" : data.loadCount
         }
         var self = this;
         Manager.executeTestCases(details, function(testCaseResp) {
@@ -104,10 +119,11 @@ class loadTestCases extends Component {
         });
     }
     render (){
-         console.log("this.testCases", this.testCases);
+         console.log("val",this.props.params.id)
+        
             
         return (
-           <div className="container">
+           <div >
                 <div className="row">
                     <h3 className="col-md-6 commonProps">Select the required options:</h3>
                 </div>
@@ -138,7 +154,7 @@ class loadTestCases extends Component {
                     <div className="row">
                         <h4 className="col-md-6 commonProps">Test SDK APIs</h4>
                     </div>
-                    <div className="form-group col-md-6 ">
+                    <div className="form-group">
                         <div className="radio" onChange={this.sdkOptionSelected}>
                             <label>
                                 <input type="radio" name="fromSdk" id="fromSdk1" value="JSSDK"></input>
@@ -152,7 +168,10 @@ class loadTestCases extends Component {
                             </label>
                         </div>
                     </div>
+                    
+                    
                 </form>
+                { /*
                 <table className={this.state.sdk ? 'table' : 'hidden'}>
                     <thead>
                         <tr>
@@ -167,6 +186,7 @@ class loadTestCases extends Component {
                         )}
                     </tbody>
                 </table>
+                */ }
                 { this.state.showInputs ? <InputOptions submit={this.executeTestCases} testCases={this.selectedtest}></InputOptions> : null}
                 
                 <table className={this.state.testReport ? 'table' : 'hidden'}>

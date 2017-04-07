@@ -26,6 +26,7 @@ class callTestCases extends Component {
     }
     sdkOptionSelected(event){
         var sdk =  event.target.value;
+        self.selectedtest = [];
         self = this;
         this.setState({
                     'sdk':  sdk
@@ -43,7 +44,14 @@ class callTestCases extends Component {
                     'testCases':  testCaseResp['testsuites']
                 })
 
-                
+                self.state.testCases.map((x, i) => {
+                    if( x.name == self.props.params.id ) {
+                       self.selectedtest.push(x.id);
+                    }                                  
+                })
+                self.setState({
+                    'showInputs':  true
+                })
                // testCases = testCaseResp;
                 });
         }
@@ -86,6 +94,13 @@ class callTestCases extends Component {
             "toTN" : data.toTN,
             "userName" : data.userName,
             "password" : data.password,
+            
+        }
+        var details = {
+            "environment" : this.state.envOption,
+            "domain" : this.state.domainOption,
+            "clientSDKType" : this.state.sdk,
+            "testSuites" : this.selectedtest
             
         }
         var self = this;
@@ -138,7 +153,7 @@ class callTestCases extends Component {
                     <div className="row">
                         <h4 className="col-md-6 commonProps">Test SDK APIs</h4>
                     </div>
-                    <div className="form-group col-md-6 ">
+                    <div className="form-group ">
                         <div className="radio" onChange={this.sdkOptionSelected}>
                             <label>
                                 <input type="radio" name="fromSdk" id="fromSdk1" value="JSSDK"></input>
@@ -153,6 +168,7 @@ class callTestCases extends Component {
                         </div>
                     </div>
                 </form>
+                {/*
                 <table className={this.state.sdk ? 'table' : 'hidden'}>
                     <thead>
                         <tr>
@@ -167,6 +183,7 @@ class callTestCases extends Component {
                         )}
                     </tbody>
                 </table>
+                */}
                 { this.state.showInputs ? <InputOptions submit={this.executeTestCases} testCases={this.selectedtest}></InputOptions> : null}
                 
                 <table className={this.state.testReport ? 'table' : 'hidden'}>

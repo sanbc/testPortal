@@ -11,11 +11,17 @@ class InputOptions extends Component{
         this.deviceIdChange = this.deviceIdChange.bind(this);
         this.fromTNChange = this.fromTNChange.bind(this);
         this.toTNChange = this.toTNChange.bind(this);
+        this.loadCountChange =this.loadCountChange.bind(this);
         this.state = {};
     } 
     onSubmit(event) {
         event.preventDefault();
         this.props.submit(this.state);
+    }
+    loadCountChange(event) {
+        this.setState ({
+            "loadCount" : event.target.value
+        })
     }
     usernameChange(event) {
         this.setState ({
@@ -53,9 +59,10 @@ class InputOptions extends Component{
         })
     }
     render() {
-        console.log("this.props.testCases['TS11']",this.props.testCases[0])
+        console.log("this.props.testCases", this.props.testCases);
         return(
             <form className="form-horizontal">
+                    {/*
                     <div className={this.props.testCases.includes('TS1', 'TS2', 'TS3', 'TS4') ? 'form-group' : 'hidden'}>
                         <label htmlFor="username" className="control-label col-md-2">Username</label>
                         <div id="username" className=" col-md-2">
@@ -103,16 +110,18 @@ class InputOptions extends Component{
                             <input id="toTN" className="form-control" type="text" onChange={this.toTNChange}></input>
                         </div>
                         
-                    </div>
-                    <div className={this.props.testCases.includes('TS20', 'TS23') ? 'form-group' : 'hidden'}>
+                    </div> */}
+                    <div className={this.props.testCases.some(r => ['TS20', 'TS23'].includes(r)) ? 'form-group' : 'hidden'}>
                         <label htmlFor="loadCount" className="control-label col-md-2">Load Count</label>
                         <div className=" col-md-2">
-                            <input id="toTN" className="form-control" type="text" onChange={this.loadCountChange}></input>
+                            <input id="loadCount" className="form-control" type="text" onChange={this.loadCountChange}></input>
                         </div>
                         
                     </div>
+                    <div className="form-group">
+                        <button  onClick={this.onSubmit}>Execute Test Cases</button>    
+                    </div>
                     
-                    <button  onClick={this.onSubmit}>Execute Test Cases</button>    
                 </form>
         
         )

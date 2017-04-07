@@ -26,24 +26,24 @@ class App extends React.Component {
                         <div className="collapse navbar-collapse">
                             <ul className="nav navbar-nav">
                                 <li>
-                                    <Link className="navbar-brand" to='/callTestCases'>End to End Test </Link>
+                                    <div className="navbar-brand">End to End Test </div>
                                     <div className="collapse navbar-collapse">
                                         <ul className="nav navbar-nav">
                                             <li >
                                                 <Link className="nav-link" to='/callTestCases/VideoCall'>Video Call</Link>
                                             </li>
                                             <li>
-                                                <Link className="navColor" to='/callTestCases/PSTNIn'>PSTN Inbound</Link>
+                                                <Link className="navColor" to='/callTestCases/PSTNInbound'>PSTN Inbound</Link>
                                             </li>
                                             <li>
-                                                <Link className="navColor" to='/callTestCases/PSTNOut'>PSTN Outbound</Link>
+                                                <Link className="navColor" to='/callTestCases/PSTNOutbound'>PSTN Outbound</Link>
                                             </li>
                                             
                                         </ul>
                                     </div>
                                 </li>
                                 <li>
-                                    <Link className="navbar-brand" to='/apiTestCases'>API Test </Link>
+                                    <div className="navbar-brand" >API Test </div>
                                     <div className="collapse navbar-collapse">
                                         <ul className="nav navbar-nav">
                                             <li >
@@ -65,14 +65,14 @@ class App extends React.Component {
                                     </div>
                                 </li>
                                 <li>
-                                    <Link className="navbar-brand" to='/loadTestCases'>Load Test </Link>
+                                    <div className="navbar-brand">Load Test </div>
                                     <div className="collapse navbar-collapse">
                                         <ul className="nav navbar-nav">
                                             <li >
-                                                <Link className="nav-link" to='/loadTestCases/EventManager'>EventManager</Link>
+                                                <Link className="nav-link" to='/loadTestCases/EndToEndVideoCall'>End To End VideoCall</Link>
                                             </li>
                                             <li>
-                                                <Link className="navColor" to='/loadTestCases/Authmanager'>Authmanager</Link>
+                                                <Link className="navColor" to='/loadTestCases/XMPPServerWebsocketConnections'>XMPP Server Websocket Connections</Link>
                                             </li>
                                             
                                         </ul>
@@ -98,12 +98,11 @@ export default App;
 render((
     <Router history={browserHistory} >
         <Route path = "/" component = {App}>
-             <IndexRoute component = {Home} />   
-             <Route path = "home" component = {Home} />
-             <Route path = "callTestCases" component={callTestCases}/>
-             <Route path = "apiTestCases" component={apiTestCases}/>
-             <Route path = "loadTestCases" component={loadTestCases}/>
-             <Route path = "apiTestCases/:id" component={apiTestCases}/>
+            <IndexRoute component = {Home} />   
+            <Route path = "home" component = {Home} />
+            <Route path = "callTestCases/:id" component={callTestCases}/>
+            <Route path = "apiTestCases/:id" component={apiTestCases}/>
+            <Route path = "loadTestCases/:id" component={loadTestCases}/>
         </Route>
     </Router>
 ),
