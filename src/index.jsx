@@ -28,9 +28,9 @@ class App extends React.Component {
                                 <li>
                                     <div className="navbar-brand">End to End Test </div>
                                     <div className="collapse navbar-collapse">
-                                        <ul className="nav navbar-nav">
-                                            <li >
-                                                <Link className="nav-link" to='/callTestCases/VideoCall'>Video Call</Link>
+                                        <ul className="navColor">
+                                            <li>
+                                                <Link className="navColor" to='/callTestCases/VideoCall'>Video Call</Link>
                                             </li>
                                             <li>
                                                 <Link className="navColor" to='/callTestCases/PSTNInbound'>PSTN Inbound</Link>
@@ -45,9 +45,9 @@ class App extends React.Component {
                                 <li>
                                     <div className="navbar-brand" >API Test </div>
                                     <div className="collapse navbar-collapse">
-                                        <ul className="nav navbar-nav">
-                                            <li >
-                                                <Link className="nav-link" to='/apiTestCases/EventManager'>EventManager</Link>
+                                        <ul className="navColor">
+                                            <li>
+                                                <Link className="navColor" to='/apiTestCases/EventManager'>EventManager</Link>
                                             </li>
                                             <li>
                                                 <Link className="navColor" to='/apiTestCases/Authmanager'>Authmanager</Link>
@@ -65,14 +65,14 @@ class App extends React.Component {
                                     </div>
                                 </li>
                                 <li>
-                                    <div className="navbar-brand">Load Test </div>
+                                    <div className="navbar-brand">Load Test Cases </div>
                                     <div className="collapse navbar-collapse">
-                                        <ul className="nav navbar-nav">
-                                            <li >
-                                                <Link className="nav-link" to='/loadTestCases/EndToEndVideoCall'>End To End VideoCall</Link>
+                                        <ul className="navColor">
+                                            <li>
+                                                <Link className="navColor" to='/loadTestCases/EndToEndVideoCall'>VideoCall</Link>
                                             </li>
                                             <li>
-                                                <Link className="navColor" to='/loadTestCases/XMPPServerWebsocketConnections'>XMPP Server Websocket Connections</Link>
+                                                <Link className="navColor" to='/loadTestCases/XMPPServerWebsocketConnections'>Websocket Connection</Link>
                                             </li>
                                             
                                         </ul>

@@ -11,4 +11,12 @@
 
 .navColor {
     color: #9d9d9d;
+    list-style-type: none;
+}
+
+a.navColor:hover,
+a.navColor:focus {
+    color: #fff;
+    background-color: transparent;
+    text-decoration: none;
 }
