@@ -152,7 +152,7 @@ class loadTestCases extends Component {
                     </div>
                 
                     <div className="row">
-                        <h4 className="col-md-6 commonProps">Test SDK APIs</h4>
+                        <h4 className=" commonProps">Test SDK APIs</h4>
                     </div>
                     <div className="form-group">
                         <div className="radio" onChange={this.sdkOptionSelected}>

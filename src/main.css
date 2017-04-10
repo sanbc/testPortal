@@ -20,3 +20,7 @@ a.navColor:focus {
     background-color: transparent;
     text-decoration: none;
 }
+
+ul.navColor {
+    float: left;
+}

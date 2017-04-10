@@ -18,7 +18,7 @@ class App extends React.Component {
       return (
           <div className="container-fluid">
             <div className="row">
-                <div className="col-sm-3 col-md-3 col-lg-2">
+                <div className="col-sm-3 col-md-4 col-lg-3">
                     <div className="navbar navbar-inverse navbar-fixed-side navbarMenu">
                         <div className="container">
                             <Link className="navbar-brand" to='/'>Home</Link>
@@ -30,7 +30,13 @@ class App extends React.Component {
                                     <div className="collapse navbar-collapse">
                                         <ul className="navColor">
                                             <li>
-                                                <Link className="navColor" to='/callTestCases/VideoCall'>Video Call</Link>
+                                                <Link className="navColor" to='/callTestCases/Login'>Login</Link>
+                                            </li>
+                                            <li>
+                                                <Link className="navColor" to='/callTestCases/EndToEndVideoCall'>Non-Anonymous Video Call</Link>
+                                            </li>
+                                            <li>
+                                                <Link className="navColor" to='/callTestCases/AnonymousVideoCall'>Anonymous Video Call</Link>
                                             </li>
                                             <li>
                                                 <Link className="navColor" to='/callTestCases/PSTNInbound'>PSTN Inbound</Link>
@@ -82,7 +88,7 @@ class App extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-9 col-md-9 col-lg-10">
+                <div className="col-sm-9 col-md-8 col-lg-9">
                     {this.props.children}
                 </div>
             </div>
