@@ -7,6 +7,9 @@
     height: 100vh;
     width: inherit;
     position: fixed;
+    border-right-color: grey;
+    border-right-style: double;
+    border-right-width: 5px;
 }
 
 .navColor {
@@ -16,7 +19,7 @@
 
 a.navColor:hover,
 a.navColor:focus {
-    color: #fff;
+    color: black;
     background-color: transparent;
     text-decoration: none;
 }

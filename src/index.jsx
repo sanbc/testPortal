@@ -14,12 +14,15 @@ import Home from './Home.jsx';
 import TestPage from './testPage.jsx';
 //render(<Home />, document.getElementById('container'));
 class App extends React.Component {
+    componentWillReceiveProps(nextProps){
+        console.log("nextProps",nextProps)
+    }
    render() {
       return (
           <div className="container-fluid">
             <div className="row">
-                <div className="col-sm-3 col-md-4 col-lg-3">
-                    <div className="navbar navbar-inverse navbar-fixed-side navbarMenu">
+                <div className="col-sm-3 col-md-4 col-lg-2">
+                    <div className="navbar navbar-fixed-side navbarMenu">
                         <div className="container">
                             <Link className="navbar-brand" to='/'>Home</Link>
                         </div>

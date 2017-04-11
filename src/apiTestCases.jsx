@@ -20,9 +20,21 @@ class apiTestCases extends Component {
                     'testReport':'',
                     'sdk': '',
                     'showInputs': '',
-                    'envOption': 'SDK',
+                    'envOption': 'PROD',
                     'domainOption': 'iristest.comcast.com'
                 }
+    }
+    componentWillReceiveProps(nextProps) {
+        if(this.props.params.id != nextProps.params.id) {
+            this.setState({
+                    'testCases':  '',
+                    'testReport':'',
+                    'sdk': '',
+                    'showInputs': '',
+                    'envOption': 'PROD',
+                    'domainOption': 'iristest.comcast.com'
+                })
+        }
     }
     sdkOptionSelected(event){
         var sdk =  event.target.value;
@@ -133,8 +145,8 @@ class apiTestCases extends Component {
                         <label htmlFor="envType" className="control-label col-md-2">Env</label>
                         <div className="col-md-2">
                             <select id="envType" className="form-control " onChange={this.envOptionSelected}>
-                                <option value="SDK">SDK</option>
                                 <option value="PROD">PROD</option>
+                                <option value="SDK">SDK</option>
                                 
                             </select>
                         </div>
