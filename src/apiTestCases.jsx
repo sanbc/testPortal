@@ -136,9 +136,12 @@ class apiTestCases extends Component {
          console.log("this.testCases", this.testCases);
             
         return (
-           <div className="container">
+           <div className="">
+                <div className="col-md-1">
+                </div>
+                <div className="col-md-11">
                 <div className="row">
-                    <h3 className="col-md-6 commonProps">Select the required options:</h3>
+                    <h4 className="col-md-6 commonProps">Select the required options:</h4>
                 </div>
                 <form className="form-horizontal">
                     <div className="form-group">
@@ -164,6 +167,9 @@ class apiTestCases extends Component {
                         </div>
                     </div>
                 
+                    <div className="spacing row">
+                    </div>
+                    
                     <div className="row">
                         <h4 className="col-md-6 commonProps">Test SDK APIs</h4>
                     </div>
@@ -182,6 +188,8 @@ class apiTestCases extends Component {
                         </div>
                     </div>
                 </form>
+                <div className="spacing row">
+                    </div>
                 {/*
                 <table className={this.state.sdk ? 'table' : 'hidden'}>
                     <thead>
@@ -197,19 +205,25 @@ class apiTestCases extends Component {
                         )} 
                     </tbody>
                 </table> */}
-                { this.state.showInputs ? <InputOptions submit={this.executeTestCases} testCases={this.selectedtest}></InputOptions> : null}
+                { this.state.showInputs ? <InputOptions submit={this.executeTestCases}  testCases={this.selectedtest}></InputOptions> : null}
+                  <div className="spacing row">
+                    </div>  
                 
-                <table className={this.state.testReport ? 'table' : 'hidden'}>
+                </div>
+                
+                <table className={this.state.testReport ? 'table table-hover' : 'hidden'}>
                     <thead>
                         <tr>
-                        <th>Name</th>
+                        <th>#</th>
+                        <th>TestCase</th>
                         <th>State</th>
-                        <th>testCase</th>
+                        <th> Time(mSec)</th>
+                        <th>Error</th>
                         </tr>
                     </thead>
                     <tbody>
                        {[...this.state.testReport].map((x, i) =>
-                        <TestReport key={i} list={x} ></TestReport>
+                        <TestReport key={i} id={i+1} list={x} ></TestReport>
                         )} 
                     </tbody>
                 </table>

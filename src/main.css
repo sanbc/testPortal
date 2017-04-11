@@ -19,11 +19,15 @@
 
 a.navColor:hover,
 a.navColor:focus {
-    color: black;
+    color: white;
     background-color: transparent;
     text-decoration: none;
 }
 
 ul.navColor {
     float: left;
+}
+
+.spacing {
+    height:50px;
 }

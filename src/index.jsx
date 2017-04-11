@@ -21,8 +21,8 @@ class App extends React.Component {
       return (
           <div className="container-fluid">
             <div className="row">
-                <div className="col-sm-3 col-md-4 col-lg-2">
-                    <div className="navbar navbar-fixed-side navbarMenu">
+                <div className="col-sm-3 col-md-4 col-lg-3">
+                    <div className="navbar navbar-inverse navbar-fixed-side navbarMenu">
                         <div className="container">
                             <Link className="navbar-brand" to='/'>Home</Link>
                         </div>
@@ -39,7 +39,7 @@ class App extends React.Component {
                                                 <Link className="navColor" to='/callTestCases/EndToEndVideoCall'>Non-Anonymous Video Call</Link>
                                             </li>
                                             <li>
-                                                <Link className="navColor" to='/callTestCases/AnonymousVideoCall'>Anonymous Video Call</Link>
+                                                <Link className="navColor" to='/callTestCases/videoCallAnonymous'>Anonymous Video Call</Link>
                                             </li>
                                             <li>
                                                 <Link className="navColor" to='/callTestCases/PSTNInbound'>PSTN Inbound</Link>
@@ -59,7 +59,7 @@ class App extends React.Component {
                                                 <Link className="navColor" to='/apiTestCases/EventManager'>EventManager</Link>
                                             </li>
                                             <li>
-                                                <Link className="navColor" to='/apiTestCases/Authmanager'>Authmanager</Link>
+                                                <Link className="navColor" to='/apiTestCases/AuthManager'>Authmanager</Link>
                                             </li>
                                             <li>
                                                 <Link className="navColor" to='/apiTestCases/CloudCode'>CloudCode</Link>
@@ -78,7 +78,7 @@ class App extends React.Component {
                                     <div className="collapse navbar-collapse">
                                         <ul className="navColor">
                                             <li>
-                                                <Link className="navColor" to='/loadTestCases/EndToEndVideoCall'>VideoCall</Link>
+                                                <Link className="navColor" to='/loadTestCases/LoadVideoCallEndToEnd'>VideoCall</Link>
                                             </li>
                                             <li>
                                                 <Link className="navColor" to='/loadTestCases/XMPPServerWebsocketConnections'>Websocket Connection</Link>
@@ -91,7 +91,10 @@ class App extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-9 col-md-8 col-lg-9">
+                <div className="col-sm-9 col-md-8 col-lg-1">
+                    
+                </div>
+                <div className="col-sm-9 col-md-8 col-lg-8">
                     {this.props.children}
                 </div>
             </div>

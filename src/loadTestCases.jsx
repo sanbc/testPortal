@@ -23,6 +23,18 @@ class loadTestCases extends Component {
                     'domainOption': 'iristest.comcast.com'
                 }
     }
+    componentWillReceiveProps(nextProps) {
+        if(this.props.params.id != nextProps.params.id) {
+            this.setState({
+                    'testCases':  '',
+                    'testReport':'',
+                    'sdk': '',
+                    'showInputs': '',
+                    'envOption': 'PROD',
+                    'domainOption': 'iristest.comcast.com'
+                })
+        }
+    }
     sdkOptionSelected(event){
         var sdk =  event.target.value;
         self = this;
@@ -123,9 +135,12 @@ class loadTestCases extends Component {
         
             
         return (
-           <div >
+           <div className="">
+                <div className="col-md-1">
+                </div>
+                <div className="col-md-11">
                 <div className="row">
-                    <h3 className="col-md-6 commonProps">Select the required options:</h3>
+                    <h4 className="col-md-6 commonProps">Select the required options:</h4>
                 </div>
                 <form className="form-horizontal">
                     <div className="form-group">
@@ -151,8 +166,10 @@ class loadTestCases extends Component {
                         </div>
                     </div>
                 
+                    <div className="spacing row">
+                    </div>
                     <div className="row">
-                        <h4 className=" commonProps">Test SDK APIs</h4>
+                        <h4 className="col-md-6 commonProps">Test SDK APIs</h4>
                     </div>
                     <div className="form-group">
                         <div className="radio" onChange={this.sdkOptionSelected}>
@@ -171,6 +188,9 @@ class loadTestCases extends Component {
                     
                     
                 </form>
+                    
+                <div className="spacing row">
+                    </div>
                 { /*
                 <table className={this.state.sdk ? 'table' : 'hidden'}>
                     <thead>
@@ -188,18 +208,24 @@ class loadTestCases extends Component {
                 </table>
                 */ }
                 { this.state.showInputs ? <InputOptions submit={this.executeTestCases} testCases={this.selectedtest}></InputOptions> : null}
+                <div className="spacing row">
+                    </div>
+                </div>
                 
-                <table className={this.state.testReport ? 'table' : 'hidden'}>
+                
+                <table className={this.state.testReport ? 'table table-hover' : 'hidden'}>
                     <thead>
                         <tr>
-                        <th>Name</th>
+                        <th>#</th>
+                        <th>TestCase</th>
                         <th>State</th>
-                        <th>testCase</th>
+                        <th>Time(mSec)</th>
+                        <th>Error</th>
                         </tr>
                     </thead>
                     <tbody>
                        {[...this.state.testReport].map((x, i) =>
-                        <TestReport key={i} list={x} ></TestReport>
+                        <TestReport key={i} id={i+1} list={x} ></TestReport>
                         )} 
                     </tbody>
                 </table>

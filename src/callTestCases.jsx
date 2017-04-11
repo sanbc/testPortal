@@ -10,6 +10,7 @@ class callTestCases extends Component {
         
         this.sdkOptionSelected = this.sdkOptionSelected.bind(this);
         this.executeTestCases = this.executeTestCases.bind(this);
+        this.stopServer = this.stopServer.bind(this);
         this.testCasesSelected = this.testCasesSelected.bind(this);
         this.selectedtest = [];
         this.envOptionSelected = this.envOptionSelected.bind(this);
@@ -23,6 +24,18 @@ class callTestCases extends Component {
                     'envOption': 'SDK',
                     'domainOption': 'iristest.comcast.com'
                 }
+    }
+    componentWillReceiveProps(nextProps) {
+        if(this.props.params.id != nextProps.params.id) {
+            this.setState({
+                    'testCases':  '',
+                    'testReport':'',
+                    'sdk': '',
+                    'showInputs': '',
+                    'envOption': 'PROD',
+                    'domainOption': 'iristest.comcast.com'
+                })
+        }
     }
     sdkOptionSelected(event){
         var sdk =  event.target.value;
@@ -78,6 +91,25 @@ class callTestCases extends Component {
                     'domainOption':  event.target.value
                 })
     }
+    stopServer() {
+        var details = {
+            "environment" : this.state.envOption,
+            "domain" : this.state.domainOption,
+            "clientSDKType" : this.state.sdk,
+            "testSuites" : ['TS13']
+        }
+        Manager.executeTestCases(details, function(testCaseResp) {
+            console.log("testCaseResp",testCaseResp);
+            testCaseResp = testCaseResp['data'];
+            console.log("testCaseResp",testCaseResp);
+                
+            console.log("testCaseResp",testCaseResp["testReport"]);
+            self.setState({
+                    'testReport':  testCaseResp['testReport']
+                })
+            
+        });
+    }
     executeTestCases(data) {
         console.log("this.props",this.selectedtest);
         var details = {
@@ -100,7 +132,9 @@ class callTestCases extends Component {
             "environment" : this.state.envOption,
             "domain" : this.state.domainOption,
             "clientSDKType" : this.state.sdk,
-            "testSuites" : this.selectedtest
+            "testSuites" : this.selectedtest,
+            "fromTN" : data.fromTN,
+            "toTN" : data.toTN
             
         }
         var self = this;
@@ -122,9 +156,12 @@ class callTestCases extends Component {
          console.log("this.testCases", this.testCases);
             
         return (
-           <div className="container">
+           <div className="">
+                <div className="col-md-1">
+                </div>
+                <div className="col-md-11">
                 <div className="row">
-                    <h3 className="col-md-6 commonProps">Select the required options:</h3>
+                    <h4 className="col-md-6 commonProps">Select the required options:</h4>
                 </div>
                 <form className="form-horizontal">
                     <div className="form-group">
@@ -150,6 +187,8 @@ class callTestCases extends Component {
                         </div>
                     </div>
                 
+                    <div className="spacing row">
+                    </div>
                     <div className="row">
                         <h4 className="col-md-6 commonProps">Test SDK APIs</h4>
                     </div>
@@ -168,6 +207,9 @@ class callTestCases extends Component {
                         </div>
                     </div>
                 </form>
+                
+                <div className="spacing row">
+                    </div>
                 {/*
                 <table className={this.state.sdk ? 'table' : 'hidden'}>
                     <thead>
@@ -184,19 +226,24 @@ class callTestCases extends Component {
                     </tbody>
                 </table>
                 */}
-                { this.state.showInputs ? <InputOptions submit={this.executeTestCases} testCases={this.selectedtest}></InputOptions> : null}
+                { this.state.showInputs ? <InputOptions submit={this.executeTestCases} testCases={this.selectedtest} stopServer={this.stopServer}></InputOptions> : null}
+                <div className="spacing row">
+                    </div>
+                </div>
                 
-                <table className={this.state.testReport ? 'table' : 'hidden'}>
-                    <thead>
+                <table className={this.state.testReport ? 'table table-hover' : 'hidden'} >
+                    <thead >
                         <tr>
-                        <th>Name</th>
+                        <th>#</th>
+                        <th>TestCase</th>
                         <th>State</th>
-                        <th>testCase</th>
+                        <th>Time(mSec)</th>
+                        <th>Error</th>
                         </tr>
                     </thead>
                     <tbody>
                        {[...this.state.testReport].map((x, i) =>
-                        <TestReport key={i} list={x} ></TestReport>
+                        <TestReport key={i} id={i+1} list={x} ></TestReport>
                         )} 
                     </tbody>
                 </table>

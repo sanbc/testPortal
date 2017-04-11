@@ -4,6 +4,7 @@ class InputOptions extends Component{
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onStopServer = this.onStopServer.bind(this);
         this.usernameChange = this.usernameChange.bind(this);
         this.passwordChange = this.passwordChange.bind(this);
         this.roomnameChange = this.roomnameChange.bind(this);
@@ -17,6 +18,10 @@ class InputOptions extends Component{
     onSubmit(event) {
         event.preventDefault();
         this.props.submit(this.state);
+    }
+    onStopServer(event) {
+        event.preventDefault();
+        this.props.stopServer();
     }
     loadCountChange(event) {
         this.setState ({
@@ -96,7 +101,7 @@ class InputOptions extends Component{
                             <input id="deviceId" className="form-control" type="text" onChange={this.deviceIdChange}></input>
                         </div>
                         
-                    </div>
+                    </div>*/}
                     <div className={this.props.testCases.includes('TS22') ? 'form-group' : 'hidden'}>
                         <label htmlFor="fromTN" className="control-label col-md-2">fromTN</label>
                         <div className=" col-md-2">
@@ -110,7 +115,7 @@ class InputOptions extends Component{
                             <input id="toTN" className="form-control" type="text" onChange={this.toTNChange}></input>
                         </div>
                         
-                    </div> */}
+                    </div> 
                     <div className={this.props.testCases.some(r => ['TS20', 'TS23'].includes(r)) ? 'form-group' : 'hidden'}>
                         <label htmlFor="loadCount" className="control-label col-md-2">Load Count</label>
                         <div className=" col-md-2">
@@ -118,10 +123,16 @@ class InputOptions extends Component{
                         </div>
                         
                     </div>
-                    <div className="form-group">
+                    <div className="spacing erow">
+                    </div>
+                    <div className="form-inline">
+                    <div className="col-md-3 form-group">
                         <button  onClick={this.onSubmit}>Execute Test Cases</button>    
                     </div>
-                    
+                    <div className={this.props.testCases.some(r => ['TS7', 'TS24', 'TS22'].includes(r)) ? 'col-md-3 form-group' : 'hidden'}>
+                        <button  onClick={this.onStopServer}>Stop Server</button>    
+                    </div>
+                </div>
                 </form>
         
         )

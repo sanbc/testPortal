@@ -13,10 +13,11 @@ class TestReport extends Component{
         
           
                 <tr>
-                    <td>{this.props.list.name}</td>
-                    <td>{this.props.list.state}</td>
+                    <td>{this.props.id}</td>
                     <td>{this.props.list.testCase}</td>
-                    
+                    <td>{this.props.list.state}</td>
+                    <td>{this.props.list.testExecutionTime}</td>
+                    <td>{this.props.list.error}</td>
                 </tr>
                                 
           
