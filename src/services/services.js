@@ -108,7 +108,7 @@ var services = {
     login: (options) => {
         console.log("hello",options);
         var url = dbUrl + '/userValidation';
-        return fetch(url, {
+        return new Promise ((resolve, reject) => {fetch(url, {
             method : 'POST',
             headers : {
                 "Content-Type": "application/json",
@@ -118,9 +118,10 @@ var services = {
         })
         .then((response) => response.json())
         .then((responseJson) => {
-            return responseJson;
+            resolve(responseJson);
         })
-    }
+    });
+    } 
 }
 
 export default services;

@@ -6,33 +6,46 @@ var url = 'mongodb://localhost:27017/test';
 exports.userValidation = (req,res) => {
     console.log("received",req.body);
     var data = req.body;
-    var email = data.email;var pwd = data.pwd
     MongoClient.connect(url, function(err, db) {
         assert.equal(null, err);
         
-        console.log("email, pwd", email,pwd);
-        validate(db, data)
+        validate(db, data).then((data) => {
+            console.log("response is",data);
+            db.close();
+            res.send(data);
+            res.end();
+        })
             
     });
     
 }
 
-var validate = (db, options) => {
+var validate = (db, options, cb) => {
+    var email = options.email;
+    var pwd = options.pwd
+    console.log("email, pwd", email,pwd);
+    return new Promise((resolve, reject) => {    
     db.collection('user').find({
-                "email" : email
+                "email" : email,
+                "pwd" : pwd
             }, function(err, docs) {
                 //assert.equal(err, null);
                 docs.each(function(err, doc) {
                     
                     if(doc) {
-                    console.log("Inserted a document into the restaurants collection.", doc);    
+                        console.log("User Validated", doc);
+                        var resp = {"text" : "User Validated", "status" : 200};
+                        resolve(resp);
                     } else {
-                        res.end();
+                        var resp = {"text" : "User not found", "status" : 400};
+                        reject(resp);
+                       // res.end();
                     }
                 })
                    
             });
-            db.close();
+            
+    });
 }
 
 var insertDocument = function(db, testReport, callback) {

@@ -1,4 +1,3 @@
-import { EventEmitter } from 'events';
 import userStore from './stores/UserStore';
 import dispatcher from './dispatcher/dispatcher.jsx';
 
