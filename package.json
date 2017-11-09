@@ -6,7 +6,7 @@
     "scripts": {
         "dev-server": "node dev-server.js",
         "dev-client": "webpack-dev-server --hot --port 8080",
-        "test": "echo \"hello\" "
+        "test": "node dev-server.js "
     },
 
     "author": "",

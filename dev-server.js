@@ -2,12 +2,13 @@ var express = require('express');
 var bodyParser = require('body-parser')
 
 
-
+var conf = process.env.prod;
+console.log("value of conf is", conf);
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post('/insertReport', function(req,resp) {
+app.post('/insertReport', function(req, resp) {
     console.log("hello", req.body);
     var testReport = req.body;
     MongoClient.connect(url, function(err, db) {
@@ -28,22 +29,22 @@ var insertDocument = function(db, testReport, callback) {
     for (var prop in testReport) {
         console.log('obj.' + prop, '=', testReport[prop]);
         prop = JSON.parse(prop);
-        for(var i = 0; i < prop.length; i++) {
+        for (var i = 0; i < prop.length; i++) {
             var obj = prop[i];
-            db.collection('testReport').insertOne( {
-                "id" : obj.id,
-                "name" : obj.name,
-                "testCase" : obj.testCase,
-                "testExecutionTime" : obj.testExecutionTime,
-                "error" : obj.error
+            db.collection('testReport').insertOne({
+                "id": obj.id,
+                "name": obj.name,
+                "testCase": obj.testCase,
+                "testExecutionTime": obj.testExecutionTime,
+                "error": obj.error
             }, function(err, result) {
                 assert.equal(err, null);
                 console.log("Inserted a document into the restaurants collection.");
                 callback();
             });
         }
-   }
-   
+    }
+
 
 };
 
