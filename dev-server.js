@@ -3,7 +3,10 @@ var bodyParser = require('body-parser')
 
 
 var conf = process.env.prod;
-var conf = JSON.stringify(conf);
+console.log("value of conf is", conf, conf.user);
+var conf1 = JSON.stringify(conf);
+console.log("value of conf is", conf1, conf1.user);
+var conf = JSON.parse(conf);
 console.log("value of conf is", conf, conf.user);
 if (conf.user == 'sanbc') {
     console.log("hello");
