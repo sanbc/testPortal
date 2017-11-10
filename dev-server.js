@@ -2,8 +2,11 @@ var express = require('express');
 var bodyParser = require('body-parser')
 
 
-var conf = process.env.user;
+var conf = process.env.prod;
 console.log("value of conf is", conf);
+if (conf.user == 'sanbc') {
+    console.log("hello");
+}
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
