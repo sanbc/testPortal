@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser')
 
 
-var conf = process.env.prod;
+var conf = process.env.user;
 console.log("value of conf is", conf);
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
